@@ -13,10 +13,11 @@ export default function Header() {
         </p>
       </div>
       <div className="bottom-header">
-        <nav role="navigation">
+        <nav>
           <button
             className="menu-toggle"
-            aria-label="menu"
+            aria-label={navOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={navOpen}
             onClick={() => setNavOpen((open) => !open)}
           >
             <span className="hamburger-bar" />

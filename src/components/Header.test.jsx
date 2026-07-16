@@ -33,11 +33,10 @@ test('renders all five nav links', () => {
 
 test('hamburger button toggles the nav open class', () => {
   renderHeader()
-  const nav = screen.getByRole('navigation')
-  const toggle = screen.getByRole('button', { name: /menu/i })
-  expect(nav.querySelector('ul')).not.toHaveClass('open')
+  const toggle = screen.getByRole('button', { name: /open menu/i })
+  expect(toggle).toHaveAttribute('aria-expanded', 'false')
   fireEvent.click(toggle)
-  expect(nav.querySelector('ul')).toHaveClass('open')
-  fireEvent.click(toggle)
-  expect(nav.querySelector('ul')).not.toHaveClass('open')
+  expect(screen.getByRole('button', { name: /close menu/i })).toHaveAttribute('aria-expanded', 'true')
+  fireEvent.click(screen.getByRole('button', { name: /close menu/i }))
+  expect(screen.getByRole('button', { name: /open menu/i })).toHaveAttribute('aria-expanded', 'false')
 })
