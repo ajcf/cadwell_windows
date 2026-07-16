@@ -7,6 +7,14 @@ import Portfolio from './pages/Portfolio'
 import Drawings from './pages/Drawings'
 import Contact from './pages/Contact'
 
+function NotFound() {
+  return (
+    <div className="page-content">
+      <p>Page not found.</p>
+    </div>
+  )
+}
+
 function Layout() {
   return (
     <>
@@ -32,6 +40,7 @@ export default function AppRoutes() {
         <Route path="/index.php/portfolio/" element={<Navigate to="/portfolio" replace />} />
         <Route path="/index.php/drawings-technical/" element={<Navigate to="/drawings" replace />} />
         <Route path="/index.php/contact/" element={<Navigate to="/contact" replace />} />
+        <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>
   )

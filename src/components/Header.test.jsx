@@ -40,3 +40,12 @@ test('hamburger button toggles the nav open class', () => {
   fireEvent.click(screen.getByRole('button', { name: /close menu/i }))
   expect(screen.getByRole('button', { name: /open menu/i })).toHaveAttribute('aria-expanded', 'false')
 })
+
+test('clicking a nav link closes the menu', () => {
+  renderHeader()
+  const toggle = screen.getByRole('button', { name: /open menu/i })
+  fireEvent.click(toggle)
+  expect(toggle).toHaveAttribute('aria-expanded', 'true')
+  fireEvent.click(screen.getByRole('link', { name: /about/i }))
+  expect(screen.getByRole('button', { name: /open menu/i })).toHaveAttribute('aria-expanded', 'false')
+})

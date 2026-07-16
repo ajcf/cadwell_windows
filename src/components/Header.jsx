@@ -5,7 +5,7 @@ export default function Header() {
   const [navOpen, setNavOpen] = useState(false)
 
   return (
-    <header className="mastheader">
+    <header>
       <div className="gc-logo-block">
         <Link to="/" className="site-title">Cadwell Windows</Link>
         <p className="site-description">
@@ -24,7 +24,10 @@ export default function Header() {
             <span className="hamburger-bar" />
             <span className="hamburger-bar" />
           </button>
-          <ul className={`primary-menu${navOpen ? ' open' : ''}`}>
+          <ul
+            className={`primary-menu${navOpen ? ' open' : ''}`}
+            onClick={() => setNavOpen(false)}
+          >
             <li><NavLink to="/" end>Home</NavLink></li>
             <li><NavLink to="/about">About</NavLink></li>
             <li><NavLink to="/portfolio">Portfolio</NavLink></li>

@@ -54,3 +54,8 @@ test('/index.php/contact/ redirects to contact content', () => {
   renderAt('/index.php/contact/')
   expect(screen.getByText(/122 Hastings Pond Rd/)).toBeInTheDocument()
 })
+
+test('unknown path renders not found page', () => {
+  renderAt('/does-not-exist')
+  expect(screen.getByText(/Page not found/)).toBeInTheDocument()
+})
