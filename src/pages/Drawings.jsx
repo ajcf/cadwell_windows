@@ -1,6 +1,10 @@
+import { useState } from 'react'
 import { sections } from '../data/drawings'
+import Lightbox from '../components/Lightbox'
 
 export default function Drawings() {
+  const [lightbox, setLightbox] = useState(null)
+
   return (
     <div className="page-content">
       {sections.map((section) => (
@@ -14,7 +18,8 @@ export default function Drawings() {
                     src={`/images/${img.src}`}
                     alt={img.caption || section.title}
                     loading="lazy"
-                    style={gallery.centered ? { maxWidth: '100%', margin: '0 auto', display: 'block' } : {}}
+                    className={gallery.centered ? 'img-full' : undefined}
+                    onClick={() => setLightbox({ src: `/images/${img.src}`, alt: img.caption || section.title })}
                   />
                   {img.caption && <figcaption>{img.caption}</figcaption>}
                 </figure>
@@ -24,6 +29,7 @@ export default function Drawings() {
           <p>{section.text}</p>
         </section>
       ))}
+      {lightbox && <Lightbox src={lightbox.src} alt={lightbox.alt} onClose={() => setLightbox(null)} />}
     </div>
   )
 }

@@ -1,6 +1,10 @@
+import { useState } from 'react'
 import { projects } from '../data/portfolio'
+import Lightbox from '../components/Lightbox'
 
 export default function Portfolio() {
+  const [lightbox, setLightbox] = useState(null)
+
   return (
     <div className="page-content">
       {projects.map((project) => (
@@ -13,6 +17,7 @@ export default function Portfolio() {
                   src={`/images/${img.src}`}
                   alt={img.caption || project.title}
                   loading="lazy"
+                  onClick={() => setLightbox({ src: `/images/${img.src}`, alt: img.caption || project.title })}
                 />
                 {img.caption && <figcaption>{img.caption}</figcaption>}
               </figure>
@@ -23,6 +28,7 @@ export default function Portfolio() {
           )}
         </section>
       ))}
+      {lightbox && <Lightbox src={lightbox.src} alt={lightbox.alt} onClose={() => setLightbox(null)} />}
     </div>
   )
 }
