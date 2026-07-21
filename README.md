@@ -1,6 +1,6 @@
 # Cadwell Windows
 
-Static React site for [cadwellwindows.com](https://www.cadwellwindows.com) — a faithful reproduction of the original WordPress site, built with Vite + React + React Router and deployed to AWS S3.
+Static site for cadwellwindows.com, built with Vite + React + React Router and deployed to AWS S3.
 
 ## Development
 
@@ -29,12 +29,4 @@ npm run preview    # Preview the built site at http://localhost:4173
 
 ## Images
 
-Photos live in `public/images/` and are copied into `dist/images/` at build time. If you need to re-download them from the live site:
-
-```bash
-BASE="https://www.cadwellwindows.com/wp-content/uploads/2020/08"
-for f in public/images/*; do
-  filename=$(basename "$f")
-  curl -sf -o "public/images/$filename" "$BASE/$filename"
-done
-```
+Photos live in `public/images/` and are copied into `dist/images/` at build time.
