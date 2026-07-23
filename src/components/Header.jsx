@@ -8,7 +8,20 @@ export default function Header() {
   return (
     <header>
       <div className="gc-logo-block">
-        <Link to="/" className="site-title">Cadwell Windows</Link>
+        <div className="title-row">
+          <Link to="/" className="site-title">Cadwell Windows</Link>
+          <button
+            className="menu-toggle"
+            aria-label={navOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={navOpen}
+            aria-controls="primary-menu"
+            onClick={() => setNavOpen((open) => !open)}
+          >
+            <span className="hamburger-bar" />
+            <span className="hamburger-bar" />
+            <span className="hamburger-bar" />
+          </button>
+        </div>
         <p className="site-description">
           Period Appropriate Windows, Doors and Woodwork | Warwick Massachusetts
         </p>
@@ -18,17 +31,8 @@ export default function Header() {
       </div>
       <div className="bottom-header">
         <nav>
-          <button
-            className="menu-toggle"
-            aria-label={navOpen ? 'Close menu' : 'Open menu'}
-            aria-expanded={navOpen}
-            onClick={() => setNavOpen((open) => !open)}
-          >
-            <span className="hamburger-bar" />
-            <span className="hamburger-bar" />
-            <span className="hamburger-bar" />
-          </button>
           <ul
+            id="primary-menu"
             className={`primary-menu${navOpen ? ' open' : ''}`}
             onClick={() => setNavOpen(false)}
           >
