@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
+import { phone, phoneHref, email } from '../data/contact'
 
 export default function Header() {
   const [navOpen, setNavOpen] = useState(false)
@@ -10,6 +11,9 @@ export default function Header() {
         <Link to="/" className="site-title">Cadwell Windows</Link>
         <p className="site-description">
           Period Appropriate Windows, Doors and Woodwork | Warwick Massachusetts
+        </p>
+        <p className="site-contact">
+          <a href={phoneHref}>{phone}</a> · <a href={`mailto:${email}`}>{email}</a>
         </p>
       </div>
       <div className="bottom-header">

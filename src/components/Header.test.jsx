@@ -22,6 +22,18 @@ test('renders tagline', () => {
   ).toBeInTheDocument()
 })
 
+test('renders phone number as a tel link', () => {
+  renderHeader()
+  const link = screen.getByRole('link', { name: '(978) 429-7947' })
+  expect(link).toHaveAttribute('href', 'tel:+19784297947')
+})
+
+test('renders email as a mailto link', () => {
+  renderHeader()
+  const link = screen.getByRole('link', { name: 'cadwelljack@gmail.com' })
+  expect(link).toHaveAttribute('href', 'mailto:cadwelljack@gmail.com')
+})
+
 test('renders all five nav links', () => {
   renderHeader()
   expect(screen.getByRole('link', { name: /home/i })).toBeInTheDocument()

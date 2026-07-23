@@ -1,3 +1,5 @@
+import { phone, email } from '../data/contact'
+
 export default function Contact() {
   return (
     <div className="page-content">
@@ -5,9 +7,9 @@ export default function Contact() {
         122 Hastings Pond Rd.<br />
         Warwick, MA 01378
       </p>
-      <p>(978) 429-7947</p>
+      <p>{phone}</p>
       <p>
-        <a href="mailto:cadwelljack@gmail.com">cadwelljack@gmail.com</a>
+        <a href={`mailto:${email}`}>{email}</a>
       </p>
       <p>
         <em>
